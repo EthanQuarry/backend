@@ -3,18 +3,14 @@ import db from '@/config/db';
 
 const router = express.Router();
 
-router.post('/flashcards', async (req, res) => {
+router.post('/flashcards/get', async (req, res) => {
   try {
-    const { question, answer, deckId } = req.body;
+    const { id } = req.body;
 
-    const flashcard = await db.flashCard.create({
-      data: {
-        question,
-        answer,
-        deck: {
-          connect: { id: deckId },
-        },
-      },
+    const flashcard = await db.flashCard.findMany({
+        where: {
+          deckId: id,
+        }
     });
 
     res.status(201).json(flashcard);
