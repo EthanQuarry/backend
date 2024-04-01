@@ -1,7 +1,7 @@
 // routes/deckRouter.ts
 import express from 'express';
 import db from '@/config/db';
-import { Flashcard, DatabaseFlashcard } from '@/interfaces/routes.interface';
+import { DatabaseFlashcard } from '@/interfaces/routes.interface';
 
 const router = express.Router();
 
